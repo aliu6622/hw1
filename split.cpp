@@ -28,7 +28,8 @@ if(evens == nullptr){
 else{
   evens = in;
 }
-split(in->next, odds, evens->next);
+in = in->next;
+split(in, odds, evens->next);
 }
 else{
 if(odds == nullptr){
@@ -37,7 +38,8 @@ if(odds == nullptr){
 else{
   odds = in;
 }
-split(in->next, odds->next, evens);
+in = in->next;
+split(in, odds->next, evens);
 }
 }
 
