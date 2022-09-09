@@ -17,29 +17,19 @@ using namespace std;
 /* Add a prototype for a helper function here if you need */
 
 void split(Node*& in, Node*& odds, Node*& evens){
-if(in == nullptr){
+if(in == nullptr){ //base case
 evens = nullptr;
 odds = nullptr;
 }
-else if(in->value % 2 == 0){
-if(evens == nullptr){
+else if(in->value % 2 == 0){ //in value is even
   evens = in;
-}
-else{
-  evens = in;
-}
 in = in->next;
-split(in, odds, evens->next);
+split(in, odds, evens->next);//pass in evens->next recursively
 }
-else{
-if(odds == nullptr){
+else{ //in value is odd
   odds = in;
-}
-else{
-  odds = in;
-}
 in = in->next;
-split(in, odds->next, evens);
+split(in, odds->next, evens);//pass in odds->next recursively
 }
 }
 
