@@ -20,6 +20,7 @@ void split(Node*& in, Node*& odds, Node*& evens){
 if(in == nullptr){ //base case
 evens = nullptr;
 odds = nullptr;
+return;
 }
 else if(in->value % 2 == 0){ //in value is even
   evens = in;
