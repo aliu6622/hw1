@@ -54,13 +54,19 @@ void ULListStr::pop_back(){
 if(empty()){//case 1: if called on empty list
     return;
 }
-else if(tail_->first == 0 && tail_->last == 1){//case 2: if popping back removes a node
+else if(head_ == tail_ && tail_->last - tail_->first == 1){//case 2: if there is only one node with one element
+  head_ = nullptr;
+  delete tail_;
+  tail_ = nullptr;
+}
+else if(tail_->last - tail_->first == 1){//case 3: if popping back removes a node
 Item* temp = new Item();
 temp = tail_;
 tail_ = tail_->prev;
+tail_->next = nullptr;
 delete temp;
 }
-else{ //case 3: if popping back just removes a number from array, just move tail pointer
+else{ //case 4: if popping back just removes a number from array, just move tail pointer
 --tail_->last;
 }
 --size_; //decrease size
@@ -143,18 +149,14 @@ std::string const & ULListStr::get(size_t loc) const
 }
 
 std::string* ULListStr::getValAtLoc(size_t loc) const{
-if(size_ >= 10){//if loc is contained within a node that is not head_ Item
+  if(empty()) return nullptr;
   Item* temp = head_;
-  int counter = loc;
-while(counter >= 10){//keep moving to the next node until you reach the final node where the loc is
+  unsigned int counter = loc;
+while(counter >= (temp->last - temp->first)){//keep moving to the next node until you reach the final node where the loc is
+  counter -= (temp->last - temp->first);
   temp = temp->next;
-  counter -= 10;
   }
   return &(temp->val[temp->first + counter]); 
-}
-else{//if loc is contained within the only Item (the head_ Item) loc 0-9
-return &(head_->val[loc]); 
-}
 }
 
 void ULListStr::clear()

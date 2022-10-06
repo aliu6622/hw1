@@ -41,9 +41,19 @@ int main(int argc, char* argv[])
   cout << dat.size() << endl; 
   dat.pop_front();
   dat.pop_back();
+  dat.pop_front();
+  dat.pop_back();
+  dat.pop_front();
+  dat.pop_back();
+  dat.pop_front();
+  dat.pop_back();
+  dat.pop_front();
+  dat.pop_back();
+  dat.pop_front();
+  dat.pop_back();
   cout << dat.front() << endl;
   cout << dat.back() << endl;
-  dat.pop_back();
-  
+  cout << "first test" << dat.get(0) << " " << dat.get(1) << " " << dat.get(2) << " " << dat.get(3) << " " << dat.get(4) << " " << dat.get(5) << " " << endl;
+  cout << "second test" << dat.get(6) << " " << dat.get(7) << " " << dat.get(8) << " " << dat.get(9) << " " << dat.get(10) << " " << dat.get(11) << " " << endl;
   return 0;
 }
